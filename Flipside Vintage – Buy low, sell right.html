@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flipside Vintage – Buy low, sell right</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#eef0f3;--ink:#10162f;--muted:#4a5270;--blue:#2438ff;--tag:#ffd60a;--card:#fff;--line:#c9cedb;--good:#0a7d3b;--bad:#c4201b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1020;--ink:#eef0ff;--muted:#a3abcf;--blue:#7d8bff;--card:#171b33;--line:#2c3256;--good:#4fd28a;--bad:#ff7a73}}
+:root[data-theme="dark"]{--bg:#0d1020;--ink:#eef0ff;--muted:#a3abcf;--blue:#7d8bff;--card:#171b33;--line:#2c3256;--good:#4fd28a;--bad:#ff7a73}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Archivo",Impact,"Arial Narrow",sans-serif;font-stretch:75%;line-height:.95;margin:0;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.logo{font:900 22px "Archivo",sans-serif;font-stretch:75%;text-decoration:none}
+nav .links{display:flex;gap:18px;font-weight:500;font-size:15px}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline}
+.hero{display:grid;gap:36px;padding:28px 0 70px;align-items:center}
+@media(min-width:820px){.hero{grid-template-columns:1.15fr .85fr}}
+.hero h1{font-size:clamp(56px,11vw,128px);font-weight:900;text-transform:uppercase}
+.hero h1 span{color:var(--blue)}
+.hero p{max-width:46ch;color:var(--muted);font-size:19px;margin:22px 0 28px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);font-weight:600;padding:14px 24px;border-radius:999px;text-decoration:none;border:0;font-size:16px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink);margin-left:8px}
+.btn:hover{transform:translateY(-2px)}
+/* the swing tag: the one memorable element */
+.tagwrap{display:flex;justify-content:center}
+.swing{width:min(320px,86%);background:var(--tag);color:#10162f;border-radius:18px 18px 22px 22px;padding:70px 26px 28px;position:relative;transform:rotate(4deg);transform-origin:50% 0;box-shadow:0 18px 0 -6px rgba(16,22,47,.15);animation:sway 1.6s ease-out 1}
+.swing::before{content:"";position:absolute;top:22px;left:50%;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 3px #10162f}
+.swing::after{content:"";position:absolute;top:35px;left:50%;width:2px;height:-60px}
+.swing dl{margin:0}
+.swing .row{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed rgba(16,22,47,.5);padding:12px 0}
+.swing dt{font-weight:600}
+.swing dd{margin:0;font:900 44px "Archivo",sans-serif;font-stretch:75%}
+.swing .profit dd{font-size:64px;color:#0a5a2b}
+.swing small{display:block;margin-top:8px;font-size:13px;opacity:.8}
+@keyframes sway{0%{transform:rotate(-14deg)}40%{transform:rotate(9deg)}70%{transform:rotate(1deg)}100%{transform:rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.swing{animation:none}.btn:hover{transform:none}html{scroll-behavior:auto}}
+section{padding:64px 0;border-top:2px solid var(--ink)}
+section>.wrap>h2{font-size:clamp(40px,7vw,72px);font-weight:900;text-transform:uppercase;margin-bottom:12px}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 36px}
+.steps{display:grid;gap:16px;list-style:none;padding:0;margin:0;counter-reset:s}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.steps li::before{content:counter(s);display:block;font:900 40px "Archivo",sans-serif;color:var(--blue);margin-bottom:6px}
+.steps h3{font-size:26px;margin-bottom:8px;text-transform:uppercase}
+.steps p{margin:0;color:var(--muted);font-size:15.5px}
+.calc{display:grid;gap:24px}
+@media(min-width:820px){.calc{grid-template-columns:1fr 1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+label{display:block;font-weight:600;font-size:15px;margin:14px 0 6px}
+label:first-child{margin-top:0}
+input,select{width:100%;font:inherit;padding:12px 14px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+input:focus,select:focus{border-color:var(--blue)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.out .big{font:900 clamp(60px,12vw,96px)/1 "Archivo",sans-serif;font-stretch:75%}
+.out .big.neg{color:var(--bad)}.out .big.pos{color:var(--good)}
+.out p{margin:6px 0}
+.out hr{border:0;border-top:1px dashed var(--line);margin:16px 0}
+.stat{display:flex;justify-content:space-between;gap:12px}
+.note{font-size:13.5px;color:var(--muted);margin-top:14px}
+.rules{display:grid;gap:14px;padding:0;list-style:none;margin:0}
+@media(min-width:760px){.rules{grid-template-columns:1fr 1fr}}
+.rules li{padding:18px 20px;border-left:6px solid var(--blue);background:var(--card);border-radius:0 12px 12px 0}
+.rules b{display:block;font-size:18px;margin-bottom:4px}
+.rules span{color:var(--muted);font-size:15.5px}
+.split{display:grid;gap:14px}
+@media(min-width:760px){.split{grid-template-columns:1fr 1fr}}
+.budget{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.budget td{padding:12px 16px;border-bottom:1px solid var(--line)}
+.budget td:last-child{text-align:right;font-weight:600}
+.budget tr:last-child td{border-bottom:0}
+footer{padding:48px 0 60px;border-top:2px solid var(--ink)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--muted);font-size:15px}
+.items{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.item h3{font-size:24px;text-transform:uppercase}
+.item p{margin:0;color:var(--muted);font-size:15.5px}
+.item .price{color:var(--ink);font-weight:600}
+.speed{margin-top:auto;align-self:flex-start;background:var(--tag);color:#10162f;font-weight:600;font-size:13.5px;padding:3px 10px;border-radius:999px}
+.links2{display:grid;gap:10px;margin-top:20px}
+.links2 .btn{text-align:center;margin:0}
+.checks{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:12px}
+.checks li{color:var(--muted);font-size:15.5px;border-left:4px solid var(--blue);padding-left:12px}
+.checks b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><a class="logo" href="#top">FLIPSIDE</a><div class="links"><a href="#how">How it works</a><a href="#items">Flippable items</a><a href="#calc">Profit calculator</a><a href="#start">Start with £50</a></div></nav>
+<header class="hero" id="top">
+<div>
+<h1>Buy low.<br>Sell <span>right.</span></h1>
+<p>Spot underpriced clothes on Vinted, Depop and eBay. Buy them. Re-list them properly. Keep the difference. Built to start on £50–£100.</p>
+<a class="btn" href="#calc">Work out your profit</a><a class="btn alt" href="#start">Starter plan</a>
+</div>
+<div class="tagwrap" aria-label="Example flip: bought for £8, sold for £34, profit £26">
+<div class="swing"><dl>
+<div class="row"><dt>Bought</dt><dd>£8</dd></div>
+<div class="row"><dt>Sold</dt><dd>£34</dd></div>
+<div class="row profit"><dt>Profit</dt><dd>£26</dd></div></dl>
+<small>Example flip: vintage zip-up fleece. Your results will vary.</small></div>
+</div>
+</header>
+</div>
+
+<section id="how"><div class="wrap">
+<h2>How a flip works</h2>
+<p class="lead">The money is made when you buy, not when you sell. Four steps, repeated.</p>
+<ol class="steps">
+<li><h3>Find</h3><p>Search misspelt brands, "job lot", "bundle", and listings with bad photos. Sellers who don't know what they have price it low.</p></li>
+<li><h3>Buy</h3><p>Only buy if the sold price (not the asking price) leaves at least £8 profit after postage. Offer 10–20% under.</p></li>
+<li><h3>List</h3><p>Wash it. Shoot it in daylight on a plain wall. Add measurements, the brand and honest flaws. Good photos sell the same item for more.</p></li>
+<li><h3>Ship</h3><p>Post within 48 hours, packaged neatly. Fast shipping gets you good reviews, and reviews get you sales.</p></li>
+</ol>
+</div></section>
+
+<section id="calc"><div class="wrap">
+<h2>Profit calculator</h2>
+<p class="lead">Put in the numbers before you hit buy. If the profit is red, walk away.</p>
+<div class="calc">
+<div class="panel">
+<label for="plat">Where you'll sell</label>
+<select id="plat">
+<option value="0,0">Vinted (no seller fee)</option>
+<option value="3.3,0.45">Depop (3.3% + 45p payment fee)</option>
+<option value="0,0">eBay private seller (no fee)</option>
+<option value="custom">Custom fees</option>
+</select>
+<div class="two">
+<div><label for="buy">Buy price (£)</label><input id="buy" type="number" inputmode="decimal" min="0" step="0.5" value="8"></div>
+<div><label for="sell">Sell price (£)</label><input id="sell" type="number" inputmode="decimal" min="0" step="0.5" value="34"></div>
+</div>
+<div class="two">
+<div><label for="post">Postage you pay (£)</label><input id="post" type="number" inputmode="decimal" min="0" step="0.5" value="0"></div>
+<div><label for="extra">Other costs (£)</label><input id="extra" type="number" inputmode="decimal" min="0" step="0.5" value="1" title="Packaging, washing, etc."></div>
+</div>
+<div class="two">
+<div><label for="pct">Fee %</label><input id="pct" type="number" inputmode="decimal" min="0" step="0.1" value="0"></div>
+<div><label for="fix">Fixed fee (£)</label><input id="fix" type="number" inputmode="decimal" min="0" step="0.05" value="0"></div>
+</div>
+<div class="two">
+<div><label for="budget">Your budget (£)</label><input id="budget" type="number" inputmode="decimal" min="0" step="5" value="75"></div>
+<div><label for="flips">Rounds of flips</label><input id="flips" type="number" inputmode="numeric" min="1" step="1" value="3"></div>
+</div>
+</div>
+<div class="panel out" aria-live="polite">
+<p>Profit on this item</p>
+<div class="big pos" id="profit">£0.00</div>
+<hr>
+<div class="stat"><span>Return on what you paid</span><b id="roi">0%</b></div>
+<div class="stat"><span>Fees taken</span><b id="fees">£0.00</b></div>
+<div class="stat"><span>Items your budget buys</span><b id="items">0</b></div>
+<div class="stat"><span>Profit across your budget and rounds</span><b id="total">£0.00</b></div>
+<p class="note" id="verdict"></p>
+<p class="note">Fees change. Check each platform's current seller fees before relying on these numbers. Fee presets are editable.</p>
+</div>
+</div>
+</div></section>
+
+<section id="items"><div class="wrap">
+<h2>Most flippable items</h2>
+<p class="lead">These sell fast in the UK and are easy to find cheap. Prices are rough estimates, so always check eBay sold listings before you buy.</p>
+<div class="items" id="itemgrid"></div>
+</div></section>
+
+<section id="finder"><div class="wrap">
+<h2>Find flippable listings</h2>
+<p class="lead">Pick an item and a max price. You get live searches on each site, sorted newest first, plus the eBay sold prices to check against.</p>
+<div class="calc">
+<div class="panel">
+<label for="fitem">Item</label>
+<select id="fitem"></select>
+<label for="fmax">Max price you'll pay (£)</label>
+<input id="fmax" type="number" inputmode="decimal" min="1" step="1" value="10">
+<label for="fcustom">Or search your own words</label>
+<input id="fcustom" type="text" placeholder="e.g. adidas track top">
+<div class="links2" id="flinks"></div>
+</div>
+<div class="panel">
+<h3>Signs a listing is flippable</h3>
+<ul class="checks">
+<li><b>Misspelt brand.</b> "Carhart" or "Levis jaket" doesn't show up in normal searches.</li>
+<li><b>Bad photos.</b> Dark, creased, on the floor. A clean re-shoot adds value.</li>
+<li><b>Bundles and clear-outs.</b> Sellers price a whole bag low. Resell each piece.</li>
+<li><b>Wrong category.</b> A vintage tee listed under "other" gets few views.</li>
+<li><b>Listed in the last hour.</b> Cheap listings go fast, so sort by newest.</li>
+<li><b>Check it's real.</b> Look at the stitching, tags and labels. Skip anything you can't verify.</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<section id="start"><div class="wrap">
+<h2>Starting on £50–£100</h2>
+<p class="lead">Small budget, so the plan is: low risk, fast turnover, reinvest everything.</p>
+<div class="split">
+<ul class="rules">
+<li><b>Buy items under £10</b><span>Cheap enough that a mistake doesn't hurt. Aim to sell for 2–3 times what you paid.</span></li>
+<li><b>Stick to what sells</b><span>Vintage sportswear, fleeces, Carhartt, Levi's, Nike, Adidas, Stone Island, band tees. Check sold listings first.</span></li>
+<li><b>Check sold, not asking</b><span>On eBay, filter by "Sold items". On Vinted and Depop, look for how fast similar items vanish.</span></li>
+<li><b>Reinvest your first profits</b><span>Don't spend the first £100 you make. Roll it back into stock until you have a steady supply.</span></li>
+</ul>
+<table class="budget" aria-label="Example budget split">
+<tr><td>Stock (8–10 items at ~£6)</td><td>£55</td></tr>
+<tr><td>Postage bags and labels</td><td>£10</td></tr>
+<tr><td>Lint roller, tape, tags</td><td>£5</td></tr>
+<tr><td>Spare for a bargain bundle</td><td>£10</td></tr>
+<tr><td>Total</td><td>£80</td></tr>
+</table>
+</div>
+</div></section>
+
+<footer><div class="wrap"><span>Flipside Vintage. Buy low, sell right.</span><span>Instagram, Depop and Vinted links go here.</span></div></footer>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ids=["buy","sell","post","extra","pct","fix","budget","flips"];
+function n(id){var v=parseFloat($(id).value);return isFinite(v)&&v>=0?v:0}
+function gbp(x){return (x<0?"-":"")+"£"+Math.abs(x).toFixed(2)}
+function calc(){
+var buy=n("buy"),sell=n("sell"),post=n("post"),extra=n("extra"),pct=n("pct"),fix=n("fix"),budget=n("budget"),flips=Math.max(1,Math.floor(n("flips")));
+var fee=sell*pct/100+(sell>0?fix:0);
+var profit=sell-fee-buy-post-extra;
+var cost=buy+post+extra;
+var roi=cost>0?Math.round(profit/cost*100):0;
+var items=buy>0?Math.floor(budget/buy):0;
+var p=$("profit");p.textContent=gbp(profit);p.className="big "+(profit>=8?"pos":profit<0?"neg":"");
+$("roi").textContent=roi+"%";
+$("fees").textContent=gbp(fee);
+$("items").textContent=items;
+$("total").textContent=gbp(profit*items*flips);
+$("verdict").textContent=profit>=8?"Good flip. This clears the £8 profit rule.":profit>=0?"Thin margin. Negotiate the buy price down or skip it.":"You'd lose money. Don't buy.";
+}
+ids.forEach(function(i){$(i).addEventListener("input",calc)});
+$("plat").addEventListener("change",function(){
+var v=this.value;if(v==="custom")return;
+var a=v.split(",");$("pct").value=a[0];$("fix").value=a[1];calc();
+});
+calc();
+})();
+</script>
+<script>
+(function(){
+var items=[
+{n:"Vintage sports fleeces and quarter-zips",q:"vintage fleece",buy:"£5–12",sell:"£20–45",s:"Fast",t:"Nike, Adidas, The North Face. Check zips and cuffs."},
+{n:"Retro football shirts",q:"retro football shirt",buy:"£8–20",sell:"£30–80",s:"Fast",t:"90s and 00s club and country shirts. Beware of fakes."},
+{n:"Carhartt jackets and workwear",q:"carhartt jacket",buy:"£15–35",sell:"£45–90",s:"Medium",t:"Wear is fine, even wanted. Check labels carefully."},
+{n:"Vintage band and graphic tees",q:"vintage band tee",buy:"£3–10",sell:"£20–60",s:"Medium",t:"Single-stitch hems and faded prints sell highest."},
+{n:"Levi's 501 and vintage denim",q:"levis 501",buy:"£6–15",sell:"£25–50",s:"Fast",t:"Always list the waist and leg measurements."},
+{n:"Nike and Adidas track tops",q:"adidas track top",buy:"£5–12",sell:"£20–40",s:"Fast",t:"Retro colourways do best. Cheap to post."},
+{n:"Ralph Lauren knitwear and polos",q:"ralph lauren jumper",buy:"£5–12",sell:"£20–40",s:"Medium",t:"Chunky knits in winter, polos in summer."},
+{n:"Branded hoodies",q:"carhartt wip hoodie",buy:"£8–15",sell:"£25–45",s:"Fast",t:"Nike, Stüssy, Carhartt WIP, Champion."},
+{n:"Y2K baby tees and low-rise flares",q:"y2k baby tee",buy:"£3–8",sell:"£15–35",s:"Fast",t:"Mostly sells on Depop. Good for bundles."}
+];
+var grid=document.getElementById("itemgrid"),sel=document.getElementById("fitem");
+items.forEach(function(it,i){
+var d=document.createElement("article");d.className="item";
+var h=document.createElement("h3");h.textContent=it.n;d.appendChild(h);
+var p=document.createElement("p");p.className="price";p.textContent="Buy "+it.buy+" → sell "+it.sell;d.appendChild(p);
+var t=document.createElement("p");t.textContent=it.t;d.appendChild(t);
+var sp=document.createElement("span");sp.className="speed";sp.textContent="Sells "+it.s.toLowerCase();d.appendChild(sp);
+grid.appendChild(d);
+var o=document.createElement("option");o.value=i;o.textContent=it.n;sel.appendChild(o);
+});
+function links(){
+var custom=document.getElementById("fcustom").value.trim();
+var q=custom||items[sel.value].q;
+var max=Math.max(1,parseFloat(document.getElementById("fmax").value)||10);
+var e=encodeURIComponent(q);
+var L=[
+["Vinted: newest under £"+max,"https://www.vinted.co.uk/catalog?search_text="+e+"&order=newest_first&price_to="+max],
+["Depop: search","https://www.depop.com/search/?q="+e],
+["eBay: newest under £"+max,"https://www.ebay.co.uk/sch/i.html?_nkw="+e+"&_sop=10&_udhi="+max],
+["eBay: what it really sold for","https://www.ebay.co.uk/sch/i.html?_nkw="+e+"&LH_Sold=1&LH_Complete=1"]
+];
+var box=document.getElementById("flinks");box.textContent="";
+L.forEach(function(x){var a=document.createElement("a");a.className="btn";a.href=x[1];a.target="_blank";a.rel="noopener noreferrer";a.textContent=x[0];box.appendChild(a);});
+}
+["fitem","fmax","fcustom"].forEach(function(i){document.getElementById(i).addEventListener("input",links)});
+links();
+})();
+</script>
+</body>
+</html>
